@@ -9,18 +9,58 @@ app.use(express.json());
 
 // Sample data (replace this with your database)
 let data = [
-  { id: 1, name: 'Item 1' },
-  { id: 2, name: 'Item 2' },
-  { id: 3, name: 'Item 3' },
-];
+    {
+      id: "1",
+      name: "Hari Bhandari",
+      photo: "",
+      department: "Business"
+    },
+    {
+      id: "2",
+      name: "Tilak Sharma",
+      photo: "",
+      department: "Transport"
+    },
+    {
+      id: "3",
+      name: "Sara Khan",
+      photo: "",
+      department: "Marketing"
+    },
+    {
+      id: "4",
+      name: "Alex Johnson",
+      photo: "",
+      department: "IT"
+    },
+    {
+      id: "5",
+      name: "Emma Davis",
+      photo: "",
+      department: "Finance"
+    },
+    {
+      id: "6",
+      name: "Raj Patel",
+      photo: "",
+      department: "Human Resources"
+    },
+    {
+      id: "7",
+      name: "Lily Chen",
+      photo: "",
+      department: "Research and Development"
+    }
+  ]
+  ;
 
 // Get all items
-app.get('/items', (req, res) => {
+app.get('/members', (req, res) => {
   res.json(data);
 });
 
 // Get a specific item by ID
-app.get('/items/:id', (req, res) => {
+app.get('/member/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const item = data.find((item) => item.id === id);
 
@@ -32,14 +72,14 @@ app.get('/items/:id', (req, res) => {
 });
 
 // Add a new item
-app.post('/items', (req, res) => {
+app.post('/members', (req, res) => {
   const newItem = req.body;
   data.push(newItem);
   res.status(201).json(newItem);
 });
 
 // Update an existing item by ID
-app.put('/items/:id', (req, res) => {
+app.put('/member/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const updatedItem = req.body;
   const index = data.findIndex((item) => item.id === id);
@@ -53,7 +93,7 @@ app.put('/items/:id', (req, res) => {
 });
 
 // Delete an item by ID
-app.delete('/items/:id', (req, res) => {
+app.delete('/member/:id', (req, res) => {
   const id = parseInt(req.params.id);
   data = data.filter((item) => item.id !== id);
   res.json({ message: 'Item deleted successfully' });
