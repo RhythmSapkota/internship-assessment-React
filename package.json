@@ -1,0 +1,17 @@
+{
+  "name": "internship-assessment-logicabeans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup-project": "cd server && npm i && cd.. && cd client && npm i",
+    "server": "cd server && node index.js",
+    "client": "cd client && npm run dev",
+    "start": "concurrently --kill-others-on-fail  \"npm run client\" \"npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
