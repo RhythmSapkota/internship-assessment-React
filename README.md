@@ -23,7 +23,7 @@ This will start both client and server by using concurrently package.
 The server will run at http://localhost:8000 and client will run at  http://localhost:5173/
 
 
-3. Navigate to l http://localhost:5173/ to view the project.
+3. Navigate to  http://localhost:5173/ on your browser to view the project.
 
 Server Resources:
 http://localhost:8000/members
