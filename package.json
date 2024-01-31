@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup-project": "cd server && npm i && cd.. && cd client && npm i",
+    "setup-project": "npm i && cd server && npm i && cd.. && cd client && npm i",
     "server": "cd server && node index.js",
     "client": "cd client && npm run dev",
     "start": "concurrently --kill-others-on-fail  \"npm run client\" \"npm run server\""
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tanstack/react-query": "^5.18.0",
     "concurrently": "^8.2.2"
   }
 }

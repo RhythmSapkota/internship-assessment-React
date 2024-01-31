@@ -1,19 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Members from './Pages/Members'
 
-function App() {
-  
+// import DashboardLayout from './Components/DashboardLayout'
+// import Members from "./Pages/Members"
+// const App = () => {
+//   return (
+//     <>
+//     <DashboardLayout>
+//       <h2>Main Content</h2>
+//       <Members/>
+//     </DashboardLayout>
+//     </>
 
-  return (
-    <>
-      <div>
-      <Members/>
-      </div>
-    </>
-  )
-}
+//   );
+// };
 
-export default App
+// export default App
