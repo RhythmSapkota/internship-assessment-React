@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createMember, editData } from "../utils/apis";
 
-
 const ManageMembers = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -19,9 +18,10 @@ const ManageMembers = () => {
     console.log(data);
 
     createMutatuon.mutateAsync(data, {
-      onSuccess: queryClient.refetchQueries(),
+      onSuccess: toast.success("Membership Created"),
     });
-    toast.success("Membership Created");
+
+    queryClient.invalidateQueries();
     navigate("/");
   };
 
@@ -43,6 +43,7 @@ const ManageMembers = () => {
     navigate("/");
     toast.success("Member Edited");
   };
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>

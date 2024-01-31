@@ -94,8 +94,9 @@ app.get("/member/:id", (req, res) => {
 // Add a new item
 app.post("/members", (req, res) => {
   const newItem = req.body;
+ const sortedData =  data.sort((a, b) => a - b)
   const newMember = {
-    id: data.length + 1,
+    id: sortedData[sortedData.length-1].id + 1,
     ...newItem,
   };
   data.push(newMember);
@@ -105,14 +106,12 @@ app.post("/members", (req, res) => {
 // Update an existing item by ID
 app.put("/member/:id", (req, res) => {
   const id = req.params.id;
-  const {updatedData} = req.body;
-  console.log(req.body)
+  const { updatedData } = req.body;
   const index = data.findIndex(
     (item) => parseInt(item.id, 10) === parseInt(id, 10)
   );
   if (index !== -1) {
     data[index] = { ...data[index], ...updatedData };
-    console.log(...data,"newData")
     res.json(data[index]);
   } else {
     res.status(404).json({ error: "Item not found" });

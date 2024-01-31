@@ -10,12 +10,8 @@ import EditMemberForm from "./Components/EditForm/EditForm.jsx";
 import Error from "./Components/Errors/Error.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -56,9 +52,9 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
-    <ReactQueryDevtools/>
-    <ToastContainer position="top-center" />
+      <RouterProvider router={router} />
+      <ReactQueryDevtools />
+      <ToastContainer position="top-center" />
     </QueryClientProvider>
   </React.StrictMode>
 );

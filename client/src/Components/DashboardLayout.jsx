@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import SideBar from './Navigation/SideBar';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import SideBar from "./Navigation/SideBar";
+import { Outlet } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const Sidebar = styled.aside`
   min-width: 200px; /* Set a minimum width for the sidebar */
   background-color: #eee;
   padding: 20px;
-  
+
   @media (max-width: 768px) {
     min-width: 0;
   }
@@ -47,21 +47,21 @@ const Footer = styled.footer`
 
 const DashboardLayout = () => {
   return (
-    
     <Container>
       <Header>
-        <h1>Internship-Assessment</h1>
+        <h1>InnovateX Solutions</h1>
       </Header>
       <MainWrapper>
         <Sidebar>
-        <SideBar/>
+          <SideBar />
         </Sidebar>
         <Main>
-            <Outlet/>
+          <Outlet />
         </Main>
       </MainWrapper>
       <Footer>
-        <p>Rhythm Sapkota</p>
+        <p>Internship Assessment : Rhythm Sapkota </p>
+        <p>LogicaBeans</p>
       </Footer>
     </Container>
   );

@@ -2,9 +2,10 @@ import React from "react";
 import { apiInstance } from "../utils/axiosInstance";
 import MembersList from "../Components/MembersList/MembersList";
 import { useNavigate } from "react-router-dom";
-import { useQuery,useQueryClient,useMutation } from "@tanstack/react-query";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { deleteData } from "../utils/apis";
+import ErrorFetch from "../Components/Errors/ErrorFetch";
 
 const Members = () => {
   const navigate = useNavigate();
@@ -18,20 +19,25 @@ const Members = () => {
       throw error;
     }
   };
-  const { isLoading, isError, data: membersData } = useQuery({
+  const {
+    isLoading,
+    isError,
+    data: membersData,
+  } = useQuery({
     queryKey: ["membersData"],
-    queryFn: fetchData
-  })
-  
+    queryFn: fetchData,
+  });
+
   const deleteMutation = useMutation({
     mutationKey: ["deleteMutation"],
-    mutationFn: (id) => deleteData(id)
+    mutationFn: (id) => deleteData(id),
   });
   const deleteController = (id) => {
-    console.log(id)
-deleteMutation.mutateAsync(id).then(()=>{
-  queryClient.invalidateQueries();
-})
+    console.log(id);
+    deleteMutation.mutateAsync(id).then(() => {
+      queryClient.invalidateQueries();
+      toast.success("Deleted Member Successfully")
+    });
   };
 
   const editController = (id, name, description, photo, department) => {
@@ -45,7 +51,7 @@ deleteMutation.mutateAsync(id).then(()=>{
       {isLoading ? (
         <p>Loading...</p>
       ) : isError ? (
-        <p>Error fetching data</p>
+        <ErrorFetch />
       ) : (
         <MembersList
           members={membersData}

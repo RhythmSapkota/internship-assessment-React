@@ -9,7 +9,7 @@ const Wrapper = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:-200px;
+  margin-top: -200px;
   img {
     width: 90vw;
     max-width: 600px;
@@ -30,13 +30,12 @@ const Wrapper = styled.main`
     text-decoration: none;
     color: black;
     text-transform: capitalize;
-  
+
     &:hover {
       color: blue;
       transform: scale(1.9);
     }
   }
-  
 `;
 
 const Error = () => {
