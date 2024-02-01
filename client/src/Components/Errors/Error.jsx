@@ -1,56 +1,64 @@
 import React from "react";
-import { Link, useRouteError } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img from "../../assets/not-found.svg";
-import styled from "styled-components";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
-const Wrapper = styled.main`
-  min-height: 100vh;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -200px;
-  img {
-    width: 90vw;
-    max-width: 600px;
-    display: block;
-    margin-bottom: 2rem;
-    margin-top: -3rem;
-  }
-  h3 {
-    margin-bottom: 0.5rem;
-  }
-  p {
-    line-height: 1.5;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary-color);
-  }
-  a {
-    text-decoration: none;
-    color: black;
-    text-transform: capitalize;
-
-    &:hover {
-      color: blue;
-      transform: scale(1.9);
-    }
-  }
-`;
+const styles = {
+  wrapper: {
+    minHeight: "100vh",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: "90vw",
+    maxWidth: 600,
+    display: "block",
+    marginBottom: "2rem",
+    marginTop: "-3rem",
+  },
+  heading: {
+    marginBottom: "0.5rem",
+  },
+  text: {
+    lineHeight: 1.5,
+    marginTop: "0.5rem",
+    marginBottom: "1rem",
+    color: "var(--text-secondary-color)",
+  },
+  link: {
+    textDecoration: "none",
+    color: "black",
+    textTransform: "capitalize",
+    "&:hover": {
+      color: "blue",
+      transform: "scale(1.9)",
+    },
+  },
+};
 
 const Error = () => {
-  const error = useRouteError();
-  console.log(error);
-
   return (
-    <Wrapper>
-      <div>
-        <img src={img} alt="not_found" />
-        <h3>Ohh! Page Not Found </h3>
-        <p>We cannot seem to find the page you are looking for</p>
-        <Link to="/">Back Home</Link>
-      </div>
-    </Wrapper>
+    <Container style={styles.wrapper}>
+      <Box>
+        <img src={img} alt="not_found" style={styles.image} />
+        <Typography variant="h5" style={styles.heading}>
+          Ohh! Page Not Found
+        </Typography>
+        <Typography variant="body1" style={styles.text}>
+          We cannot seem to find the page you are looking for
+        </Typography>
+        <Link to="/" style={styles.link}>
+          <Button variant="contained" color="primary">
+            Back Home
+          </Button>
+        </Link>
+      </Box>
+    </Container>
   );
 };
 

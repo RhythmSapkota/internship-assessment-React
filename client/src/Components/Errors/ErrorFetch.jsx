@@ -1,36 +1,40 @@
 import React from "react";
-import styled from "styled-components";
-import img from "../../assets/Internal-Server-Error.png";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Image from "../../assets/Internal-Server-Error.png";
 
-const ErrorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f8f8f8;
-`;
-
-const ErrorImage = styled.img`
-  width: 900px;
-  margin-bottom: 20px;
-`;
-
-const ErrorMessage = styled.p`
-  font-size: 18px;
-  color: #333;
-  text-align: center;
-  margin-bottom: 30px;
-`;
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+    backgroundColor: "#f8f8f8",
+  },
+  image: {
+    width: 900,
+    marginBottom: 20,
+  },
+  errorMessage: {
+    fontSize: 18,
+    color: "#333",
+    textAlign: "center",
+    marginBottom: 30,
+  },
+};
 
 const ErrorFetch = () => {
   return (
-    <ErrorContainer>
-      <ErrorImage src={img} alt="Error" />
-      <ErrorMessage>
-        Oops! Something went wrong while fetching the data.
-      </ErrorMessage>
-    </ErrorContainer>
+    <Container style={styles.container}>
+      <Box>
+        <img src={Image} alt="Error" style={styles.image} />
+        <Typography variant="body1" style={styles.errorMessage}>
+          Oops! Something went wrong while fetching the data.
+        </Typography>
+      </Box>
+    </Container>
   );
 };
 
