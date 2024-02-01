@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaGlobe, FaUsers, FaHeart, FaCheckCircle } from "react-icons/fa";
+import { Typography } from "@mui/material";
 
 // Styled components for your page
 const AboutUsContainer = styled.div`
@@ -53,7 +54,7 @@ const About = () => {
     <AboutUsContainer>
       <Section>
         <Title>Our Story</Title>
-        <Content>
+        <Typography variant="h6" component="p">
           Welcome to InnovateX Solutions, where innovation meets passion to
           create a lasting impact. Founded in 2015, our journey began with a
           vision to revolutionize tech solutions. The challenges we faced early
@@ -64,7 +65,7 @@ const About = () => {
           leading industry players, showcasing our commitment to excellence.
           Today, we stand tall as a testament to the unwavering spirit that
           drives us to push boundaries and redefine possibilities.
-        </Content>
+        </Typography>
       </Section>
 
       <Section>
@@ -72,7 +73,7 @@ const About = () => {
         <IconContainer>
           <FaGlobe />
         </IconContainer>
-        <Content>
+        <Typography variant="h6" component="p">
           At InnovateX Solutions, our mission is to empower businesses through
           cutting-edge technology. We believe in integrity, collaboration, and
           continuous improvement, and our work is guided by the commitment to
@@ -82,7 +83,7 @@ const About = () => {
           step towards fulfilling this mission, ensuring that our journey is not
           just about business but making a positive contribution to the world
           around us.
-        </Content>
+        </Typography>
       </Section>
 
       <Section>
@@ -90,9 +91,9 @@ const About = () => {
         <IconContainer>
           <FaUsers />
         </IconContainer>
-        <Content>
+        <Typography variant="h6" component="p">
           Meet the heart and soul of InnovateX Solutions, our dedicated team:
-        </Content>
+        </Typography>
 
         <TeamMember>
           <TeamMemberImage
@@ -101,13 +102,13 @@ const About = () => {
           />
           <TeamMemberName>Rhythm Sapkota</TeamMemberName>
           <TeamMemberRole>Founder & CEO</TeamMemberRole>
-          <Content>
+          <Typography variant="h6" component="p">
             As the CEO, Rhythm oversees our technological strategies. With over
             a decade of experience in software development, she brings
             invaluable expertise to the table. Alexandra played a pivotal role
             in developing our flagship product, XStream, contributing
             significantly to its success.
-          </Content>
+          </Typography>
         </TeamMember>
 
         <TeamMember>
@@ -117,19 +118,15 @@ const About = () => {
           />
           <TeamMemberName>Ramesh Jadav</TeamMemberName>
           <TeamMemberRole>CMO</TeamMemberRole>
-          <Content>
+          <Typography variant="h6" component="p">
             Ramesh Jadav leads our marketing efforts, ensuring our products
             reach the right audience. With a background in digital marketing, he
             has successfully executed campaigns that have elevated our brand
             presence. Ryan's innovative approach played a key role in doubling
             our client base within a year.
-          </Content>
+          </Typography>
         </TeamMember>
-
-        {/* Add more team members as needed */}
       </Section>
-
-      {/* Continue with other sections as per the template */}
     </AboutUsContainer>
   );
 };

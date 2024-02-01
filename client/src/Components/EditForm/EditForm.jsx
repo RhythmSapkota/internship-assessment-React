@@ -1,14 +1,15 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useParams, useLocation } from "react-router-dom";
 import { FormContainer } from "../AddMembers/AddMemberForm";
 import { schema } from "../AddMembers/AddMemberForm";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
-const EditMemberForm = ({ onSubmit, memberData }) => {
+const EditMemberForm = ({ onSubmit }) => {
   const {
     handleSubmit,
-    register,
+    control,
     formState: { errors },
     setValue,
   } = useForm({
@@ -40,38 +41,120 @@ const EditMemberForm = ({ onSubmit, memberData }) => {
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
-      <div>
-        <label>Name:</label>
-        <input {...register("name")} placeholder="Name" />
-        <p>{errors?.name?.message}</p>
-      </div>
+    <Box
+      marginLeft={"600px"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      width={"400px"}
+      padding={"40px"}
+    >
+      <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
+        <Box
+          border={"solid 1px"}
+          borderRadius={"3%"}
+          padding={"20px"}
+          textAlign={"center"}
+        >
+          <Typography
+            variant="h4"
+            fontSize={"26px"}
+            fontWeight={"bold"}
+            sx={{ marginBottom: "15px" }}
+          >
+            Edit Member
+          </Typography>
+          <hr />
+          <br />
+          <Controller
+            name="name"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Name"
+                placeholder="Enter your name"
+                sx={{ marginTop: "10px" }}
+                fullWidth
+              />
+            )}
+          />
+          <Typography color={"red"} variant="p">
+            {errors?.name?.message}
+          </Typography>
 
-      <div>
-        <label>Department:</label>
-        <input {...register("department")} placeholder="Department Name" />
-        <p>{errors?.department?.message}</p>
-      </div>
-
-      <div>
-        <label>Photo:</label>
-        <input {...register("photo")} placeholder="Copy Image URL" />
-        <p>{errors?.photo?.message}</p>
-      </div>
-
-      <div>
-        <label>Bio:</label>
-        <textarea
-          {...register("description")}
-          placeholder="Brief Description"
-        />
-        <p>{errors?.description?.message}</p>
-      </div>
-
-      <div>
-        <button type="submit">Confirm Edit</button>
-      </div>
-    </FormContainer>
+          <Box>
+            <Controller
+              name="department"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Department"
+                  placeholder="Department Name"
+                  sx={{ marginTop: "10px" }}
+                  fullWidth
+                />
+              )}
+            />
+            <Typography color={"red"} variant="p">
+              {errors?.department?.message}
+            </Typography>
+          </Box>
+          <Box>
+            <Controller
+              name="photo"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Photo"
+                  placeholder="Paste Image URL"
+                  sx={{ marginTop: "10px" }}
+                  fullWidth
+                />
+              )}
+            />
+            <Typography color={"red"} variant="p">
+              {errors?.photo?.message}
+            </Typography>
+          </Box>
+          <Box>
+            <Controller
+              name="description"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Description"
+                  placeholder="Brief Description"
+                  sx={{ marginTop: "10px" }}
+                  multiline
+                  rows={3}
+                  maxRows={5}
+                  fullWidth
+                />
+              )}
+            />
+            <Typography color={"red"} variant="p">
+              {errors?.description?.message}
+            </Typography>
+          </Box>
+          <Box>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ marginTop: "10px" }}
+            >
+              <Typography variant="button">Add Member</Typography>
+            </Button>
+          </Box>
+        </Box>
+      </FormContainer>
+    </Box>
   );
 };
 

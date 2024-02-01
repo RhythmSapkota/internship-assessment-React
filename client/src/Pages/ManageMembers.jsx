@@ -46,10 +46,6 @@ const ManageMembers = () => {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>
-        {id ? "Edit Member" : "Add Member"}
-      </h1>
-
       {id ? (
         <EditMemberForm onSubmit={handleEdit} />
       ) : (

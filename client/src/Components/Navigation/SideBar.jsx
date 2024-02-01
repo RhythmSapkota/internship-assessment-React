@@ -1,18 +1,17 @@
 import React from "react";
 import SideBarList from "./SideBarList";
-import styled from "styled-components";
-
-const SidebarContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { Box, Typography } from "@mui/material";
 
 const SideBar = () => {
   return (
-    <SidebarContent>
-      <h2>Dashboard</h2>
+    <Box>
+      <Typography variant="h2" fontSize={"28px"} marginTop={"70px"}>
+        Dashboard
+      </Typography>
+
+      <hr />
       <SideBarList />
-    </SidebarContent>
+    </Box>
   );
 };
 

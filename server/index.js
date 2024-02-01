@@ -7,7 +7,6 @@ const port = 8000;
 app.use(cors());
 app.use(express.json());
 
-// Sample data (replace this with your database)
 let data = [
   {
     id: 1,
@@ -94,9 +93,9 @@ app.get("/member/:id", (req, res) => {
 // Add a new item
 app.post("/members", (req, res) => {
   const newItem = req.body;
- const sortedData =  data.sort((a, b) => a - b)
+  const sortedData = data.sort((a, b) => a - b);
   const newMember = {
-    id: sortedData[sortedData.length-1].id + 1,
+    id: sortedData[sortedData.length - 1].id + 1,
     ...newItem,
   };
   data.push(newMember);

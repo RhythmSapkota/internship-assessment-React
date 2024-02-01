@@ -1,55 +1,58 @@
+import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const SidebarLink = styled.div`
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: "Arial", sans-serif; /* Example font family */
-    letter-spacing: 1px;
-    transition: color 0.3s;
-    border-radius: 5px;
-    padding: 10px;
-
-    &:hover {
-      background-color: #ddd;
-    }
-  }
-`;
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
 
 const SideBarList = () => {
-  const pages = [
-    {
-      title: "Members",
-      url: "/",
-    },
-    {
-      title: "Create Member",
-      url: "/manage-members",
-    },
-    {
-      title: "About Us",
-      url: "/about",
-    },
-  ];
+  const navigate = useNavigate();
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <SidebarLink>
-      {pages.map((page, index) => (
-        <Link key={index} to={page.url}>
-          {page.title}
-        </Link>
-      ))}
-    </SidebarLink>
+    <Box
+      sx={{
+        marginTop: "30px",
+        display: "flex",
+        flexDirection: "column",
+        padding: "10px",
+      }}
+    >
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        sx={{ borderRight: 1, borderColor: "divider" }}
+      >
+        <Tab
+          onClick={() => navigate("/")}
+          label={"Member"}
+          {...a11yProps(0)}
+          style={{ fontSize: "18px" }}
+        />
+        <Tab
+          label={"Create"}
+          {...a11yProps(1)}
+          onClick={() => navigate("/manage-members")}
+          style={{ fontSize: "18px" }}
+        ></Tab>
+        <Tab
+          onClick={() => navigate("/about")}
+          label={"About"}
+          {...a11yProps(2)}
+          style={{ fontSize: "18px" }}
+        ></Tab>
+      </Tabs>
+    </Box>
   );
 };
 

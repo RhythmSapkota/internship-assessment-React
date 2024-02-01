@@ -1,68 +1,81 @@
 import React from "react";
-import styled from "styled-components";
 import SideBar from "./Navigation/SideBar";
 import { Outlet } from "react-router-dom";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-
-const Header = styled.header`
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-`;
-
-const MainWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  overflow: hidden; /* To prevent content overflow */
-`;
-
-const Sidebar = styled.aside`
-  width: 10%;
-  min-width: 200px; /* Set a minimum width for the sidebar */
-  background-color: #eee;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    min-width: 0;
-  }
-`;
-
-const Main = styled.main`
-  flex: 1;
-  padding: 20px;
-`;
-
-const Footer = styled.footer`
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-`;
+import { AppBar, Typography, Container } from "@mui/material";
 
 const DashboardLayout = () => {
   return (
-    <Container>
-      <Header>
-        <h1>InnovateX Solutions</h1>
-      </Header>
-      <MainWrapper>
-        <Sidebar>
-          <SideBar />
-        </Sidebar>
-        <Main>
-          <Outlet />
-        </Main>
-      </MainWrapper>
-      <Footer>
-        <p>Internship Assessment : Rhythm Sapkota </p>
+    <Container
+      component="main"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        margin: "0px",
+      }}
+    >
+      <AppBar color="secondary">
+        <Typography variant="h4" textAlign="center" padding="10px">
+          InnovateX Solutions
+        </Typography>
+      </AppBar>
+      <Container
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+        }}
+      >
+        <Container
+          component="div"
+          sx={{
+            display: "flex",
+            minHeight: "92vh",
+            // "@media (min-width: 1200px)": {
+            //   maxWidth: "200px",
+            // },
+          }}
+        >
+          <Container
+            component="aside"
+            sx={{
+              maxWidth: "200px",
+              borderRight: "solid 1px",
+              borderColor: "GrayText",
+              "@media (min-width: 1200px)": {
+                maxWidth: "200px",
+              },
+            }}
+          >
+            <SideBar />
+          </Container>
+          <Container
+            component="div"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+            }}
+          >
+            <Outlet />
+          </Container>
+        </Container>
+      </Container>
+      <Container
+        component="footer"
+        sx={{
+          backgroundColor: "#333",
+          padding: "10px",
+          textAlign: "center",
+          color: "#fff",
+          marginTop: "auto",
+          flexShrink: 0, // Ensure the footer doesn't shrink
+        }}
+      >
+        <p>Internship Assessment: Rhythm Sapkota</p>
         <p>LogicaBeans</p>
-      </Footer>
+      </Container>
     </Container>
   );
 };
