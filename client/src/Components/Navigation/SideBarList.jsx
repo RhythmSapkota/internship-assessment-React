@@ -1,5 +1,5 @@
-import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
+import { Box, Tab, Tabs } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function a11yProps(index) {

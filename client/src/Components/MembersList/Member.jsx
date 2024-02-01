@@ -45,7 +45,11 @@ const Member = ({
           {department}
         </Typography>
         {description && (
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ wordWrap: "break-word" }}
+          >
             {description}
           </Typography>
         )}

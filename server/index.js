@@ -73,12 +73,12 @@ let data = [
   },
 ];
 
-// Get all items
+// Get all members
 app.get("/members", (req, res) => {
   res.json(data);
 });
 
-// Get a specific item by ID
+// Get a specific member by ID
 app.get("/member/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const item = data.find((item) => item.id === id);
@@ -90,7 +90,7 @@ app.get("/member/:id", (req, res) => {
   }
 });
 
-// Add a new item
+// Add a new member
 app.post("/members", (req, res) => {
   const newItem = req.body;
   const sortedData = data.sort((a, b) => a - b);
@@ -102,7 +102,7 @@ app.post("/members", (req, res) => {
   res.status(201).json(newMember);
 });
 
-// Update an existing item by ID
+// Update an existing member by ID
 app.put("/member/:id", (req, res) => {
   const id = req.params.id;
   const { updatedData } = req.body;
@@ -117,7 +117,7 @@ app.put("/member/:id", (req, res) => {
   }
 });
 
-// Delete an item by ID
+// Delete an member by ID
 app.delete("/member/:id", (req, res) => {
   const idToDelete = req.params.id;
   const newdata = data.filter(
@@ -127,7 +127,6 @@ app.delete("/member/:id", (req, res) => {
   res.json({ message: "Item deleted successfully", newdata });
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });

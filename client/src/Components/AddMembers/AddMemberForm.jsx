@@ -2,7 +2,6 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import styled from "styled-components";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/material";
 export const schema = yup.object().shape({
@@ -12,13 +11,9 @@ export const schema = yup.object().shape({
   description: yup.string().required("Description is required").min(30),
 });
 
-// Styled components
-export const FormContainer = styled.form``;
-
 const AddMemberForm = ({ onSubmit }) => {
   const {
     handleSubmit,
-    register,
     control,
     formState: { errors },
   } = useForm({
@@ -26,7 +21,6 @@ const AddMemberForm = ({ onSubmit }) => {
   });
 
   const handleFormSubmit = (data) => {
-    // Assuming onSubmit is a function passed as a prop
     onSubmit(data);
   };
 
@@ -38,7 +32,7 @@ const AddMemberForm = ({ onSubmit }) => {
       width={"100%"}
       overflow={"hidden"}
     >
-      <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <Box
           border={"solid 1px"}
           borderRadius={"3%"}
@@ -150,7 +144,7 @@ const AddMemberForm = ({ onSubmit }) => {
             </Button>
           </Box>
         </Box>
-      </FormContainer>
+      </form>
     </Box>
   );
 };

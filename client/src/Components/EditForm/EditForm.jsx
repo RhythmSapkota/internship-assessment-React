@@ -2,7 +2,6 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useParams, useLocation } from "react-router-dom";
-import { FormContainer } from "../AddMembers/AddMemberForm";
 import { schema } from "../AddMembers/AddMemberForm";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
@@ -48,7 +47,7 @@ const EditMemberForm = ({ onSubmit }) => {
       width={"100%"}
       overflow={"hidden"}
     >
-      <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <Box
           border={"solid 1px"}
           borderRadius={"3%"}
@@ -160,7 +159,7 @@ const EditMemberForm = ({ onSubmit }) => {
             </Button>
           </Box>
         </Box>
-      </FormContainer>
+      </form>
     </Box>
   );
 };

@@ -6,6 +6,8 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { deleteData } from "../utils/apis";
 import ErrorFetch from "../Components/Errors/ErrorFetch";
+import { Skeleton, Stack, Typography } from "@mui/material";
+import { FiLoader } from "react-icons/fi";
 
 const Members = () => {
   const navigate = useNavigate();
@@ -22,6 +24,8 @@ const Members = () => {
   const {
     isLoading,
     isError,
+    isFetching,
+    isPending,
     data: membersData,
   } = useQuery({
     queryKey: ["membersData"],
@@ -36,7 +40,7 @@ const Members = () => {
     console.log(id);
     deleteMutation.mutateAsync(id).then(() => {
       queryClient.invalidateQueries();
-      toast.success("Deleted Member Successfully")
+      toast.success("Deleted Member Successfully");
     });
   };
 
@@ -47,9 +51,26 @@ const Members = () => {
 
   return (
     <>
-      <h1>Our Members</h1>
-      {isLoading ? (
-        <p>Loading...</p>
+      <Typography variant="h4" marginTop={"35px"}>
+        Our Members
+      </Typography>
+      {isLoading || isPending || isFetching ? (
+        <>
+          <Stack spacing={1} marginTop="70px">
+            <Typography variant="h4" marginTop={"35px"} textAlign={"center"}>
+              Loading <FiLoader size={"30px"} />
+            </Typography>
+
+            <Skeleton
+              variant="text"
+              sx={{ fontSize: "2rem", marginTop: "140px" }}
+            />
+            {/* For other variants, adjust the size with `width` and `height` */}
+            <Skeleton variant="circular" width={100} height={100} />
+            <Skeleton variant="rectangular" width={510} height={100} />
+            <Skeleton variant="rounded" width={510} height={100} />
+          </Stack>
+        </>
       ) : isError ? (
         <ErrorFetch />
       ) : (
