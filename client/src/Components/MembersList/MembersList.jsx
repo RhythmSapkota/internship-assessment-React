@@ -1,25 +1,24 @@
 import React from "react";
 import Member from "./Member";
-import styled from "styled-components";
-const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+import { Grid, CircularProgress } from "@mui/material";
+
 const MembersList = ({ members, handleDelete, handleEdit }) => {
-  console.log(members);
   return (
-    <Grid>
+    <Grid container spacing={2} justifyContent="center">
       {members ? (
         members.map((member) => (
-          <Member
-            key={member.id}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-            {...member}
-          />
+          <Grid key={member.id} item xs={12} sm={6} md={4}>
+            <Member
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              {...member}
+            />
+          </Grid>
         ))
       ) : (
-        <p>Loading...</p>
+        <Grid item>
+          <CircularProgress />
+        </Grid>
       )}
     </Grid>
   );

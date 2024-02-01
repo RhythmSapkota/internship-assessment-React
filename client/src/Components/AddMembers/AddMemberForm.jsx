@@ -34,8 +34,8 @@ const AddMemberForm = ({ onSubmit }) => {
     <Box
       justifyContent={"center"}
       alignItems={"center"}
-      width={"400px"}
-      padding={"40px"}
+      maxWidth={"500px"}
+      width={"100%"}
       overflow={"hidden"}
     >
       <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>

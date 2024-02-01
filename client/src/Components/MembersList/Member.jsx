@@ -1,42 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  Typography,
+  Grid,
+  Avatar,
+} from "@mui/material";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-const MemberCard = styled.div`
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  button {
-    margin-left: 25px;
-  }
-`;
-
-const MemberPhoto = styled.img`
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-bottom: 12px;
-`;
-
-const MemberName = styled.h3`
-  color: #333;
-  margin-bottom: 8px;
-`;
-
-const MemberDepartment = styled.p`
-  color: #666;
-  margin-bottom: 16px;
-`;
-
-const MemberDescription = styled.p`
-  color: #444;
-`;
 
 const Member = ({
   id,
@@ -56,20 +29,45 @@ const Member = ({
     e.preventDefault();
     handleDelete(id);
   };
-  return (
-    <MemberCard>
-      {photo && <MemberPhoto src={photo} alt={`${name}'s photo`} />}
-      <MemberName>{name}</MemberName>
-      <MemberDepartment>{department}</MemberDepartment>
-      {description && <MemberDescription>{description}</MemberDescription>}
-      <button onClick={handleEditItem}>
-        <FaEdit size={30} />
-      </button>
 
-      <button onClick={handleDeleteItem}>
-        <MdDeleteForever style={{ fontSize: "30px" }} />
-      </button>
-    </MemberCard>
+  return (
+    <Card sx={{ maxWidth: 300, textAlign: "center", mx: 2, my: 2 }}>
+      <Avatar
+        sx={{ width: 80, height: 80, mx: "auto", my: 2 }}
+        alt={`${name}'s photo`}
+        src={photo}
+      />
+      <CardContent>
+        <Typography variant="h5" color="text.primary" gutterBottom>
+          {name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" paragraph>
+          {department}
+        </Typography>
+        {description && (
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        )}
+      </CardContent>
+      <CardActions>
+        <Grid container justifyContent="center">
+          <Button onClick={handleEditItem} variant="outlined" color="primary">
+            <FaEdit size={20} style={{ marginRight: 8 }} />
+            Edit
+          </Button>
+          <Button
+            onClick={handleDeleteItem}
+            variant="outlined"
+            color="error"
+            style={{ marginLeft: "10px" }}
+          >
+            <MdDeleteForever style={{ fontSize: "20px", marginRight: 8 }} />
+            Delete
+          </Button>
+        </Grid>
+      </CardActions>
+    </Card>
   );
 };
 

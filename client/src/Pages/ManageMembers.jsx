@@ -3,7 +3,7 @@ import AddMemberForm from "../Components/AddMembers/AddMemberForm";
 import { useParams, useNavigate } from "react-router-dom";
 import EditMemberForm from "../Components/EditForm/EditForm";
 import { toast } from "react-toastify";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { createMember, editData } from "../utils/apis";
 
 const ManageMembers = () => {
@@ -17,11 +17,11 @@ const ManageMembers = () => {
   const handleSubmit = (data) => {
     console.log(data);
 
-    createMutatuon.mutateAsync(data, {
-      onSuccess: toast.success("Membership Created"),
-    });
-
-    queryClient.invalidateQueries();
+    createMutatuon
+      .mutateAsync(data, {
+        onSuccess: toast.success("Membership Created"),
+      })
+      .then((res) => queryClient.invalidateQueries());
     navigate("/");
   };
 
@@ -37,11 +37,12 @@ const ManageMembers = () => {
       ...data,
     };
 
-    editMutation.mutate(updatedData, {
-      onSuccess: queryClient.invalidateQueries(),
-    });
+    editMutation
+      .mutateAsync(updatedData, {
+        onSuccess: toast.success("Member Edited"),
+      })
+      .then((res) => queryClient.invalidateQueries());
     navigate("/");
-    toast.success("Member Edited");
   };
 
   return (

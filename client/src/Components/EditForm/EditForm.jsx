@@ -42,11 +42,11 @@ const EditMemberForm = ({ onSubmit }) => {
 
   return (
     <Box
-      marginLeft={"600px"}
       justifyContent={"center"}
       alignItems={"center"}
-      width={"400px"}
-      padding={"40px"}
+      maxWidth={"500px"}
+      width={"100%"}
+      overflow={"hidden"}
     >
       <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
         <Box
@@ -54,6 +54,7 @@ const EditMemberForm = ({ onSubmit }) => {
           borderRadius={"3%"}
           padding={"20px"}
           textAlign={"center"}
+          marginTop={"90px"}
         >
           <Typography
             variant="h4"
@@ -61,7 +62,7 @@ const EditMemberForm = ({ onSubmit }) => {
             fontWeight={"bold"}
             sx={{ marginBottom: "15px" }}
           >
-            Edit Member
+            Edit Members
           </Typography>
           <hr />
           <br />
@@ -79,10 +80,11 @@ const EditMemberForm = ({ onSubmit }) => {
               />
             )}
           />
-          <Typography color={"red"} variant="p">
-            {errors?.name?.message}
-          </Typography>
-
+          <Box textAlign="left" p={2} padding={"1px"}>
+            <Typography color={"red"} variant="p" textAlign={"left"}>
+              {errors?.name?.message}
+            </Typography>
+          </Box>
           <Box>
             <Controller
               name="department"
@@ -98,9 +100,11 @@ const EditMemberForm = ({ onSubmit }) => {
                 />
               )}
             />
-            <Typography color={"red"} variant="p">
-              {errors?.department?.message}
-            </Typography>
+            <Box textAlign="left" p={2} padding={"1px"}>
+              <Typography color={"red"} variant="p">
+                {errors?.department?.message}
+              </Typography>
+            </Box>
           </Box>
           <Box>
             <Controller
@@ -117,9 +121,11 @@ const EditMemberForm = ({ onSubmit }) => {
                 />
               )}
             />
-            <Typography color={"red"} variant="p">
-              {errors?.photo?.message}
-            </Typography>
+            <Box textAlign="left" p={2} padding={"1px"}>
+              <Typography color={"red"} variant="p">
+                {errors?.photo?.message}
+              </Typography>
+            </Box>
           </Box>
           <Box>
             <Controller
@@ -133,15 +139,16 @@ const EditMemberForm = ({ onSubmit }) => {
                   placeholder="Brief Description"
                   sx={{ marginTop: "10px" }}
                   multiline
-                  rows={3}
-                  maxRows={5}
+                  rows={5}
                   fullWidth
                 />
               )}
             />
-            <Typography color={"red"} variant="p">
-              {errors?.description?.message}
-            </Typography>
+            <Box textAlign="left" p={2} padding={"1px"}>
+              <Typography color={"red"} variant="p">
+                {errors?.description?.message}
+              </Typography>
+            </Box>
           </Box>
           <Box>
             <Button
@@ -149,7 +156,7 @@ const EditMemberForm = ({ onSubmit }) => {
               variant="contained"
               sx={{ marginTop: "10px" }}
             >
-              <Typography variant="button">Add Member</Typography>
+              <Typography variant="button">Edit Member</Typography>
             </Button>
           </Box>
         </Box>

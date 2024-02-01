@@ -22,7 +22,6 @@ const SideBarList = () => {
         marginTop: "30px",
         display: "flex",
         flexDirection: "column",
-        padding: "10px",
       }}
     >
       <Tabs
