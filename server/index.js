@@ -17,6 +17,7 @@ let data = [
     description:
       "A strategic thinker and business enthusiast, Hari leads initiatives that drive growth and innovation within the organization.",
   },
+
   {
     id: 2,
     name: "Tilak Sharma",
