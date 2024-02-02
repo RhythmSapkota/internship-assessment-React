@@ -4,11 +4,8 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import { IoMenu } from "react-icons/io5";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 const pages = [
@@ -24,6 +21,8 @@ export default function TemporaryDrawer() {
     bottom: false,
     right: false,
   });
+
+  const navigate = useNavigate();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -45,16 +44,11 @@ export default function TemporaryDrawer() {
     >
       <List>
         {pages.map((page, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <Link to={page.url} style={{ textDecoration: "none" }}>
-                <ListItemText
-                  primary={page.title}
-                  style={{ fontSize: "24px" }}
-                />
-              </Link>
-            </ListItemButton>
-          </ListItem>
+          <Button key={index} onClick={() => navigate(page.url)} fullWidth>
+            <Typography variant="button" style={{ fontSize: "24px" }}>
+              {page.title}
+            </Typography>
+          </Button>
         ))}
       </List>
     </Box>
