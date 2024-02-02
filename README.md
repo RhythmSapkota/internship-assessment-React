@@ -53,7 +53,7 @@ Use the following Command in the main directory (i.e. internship-assessment-logi
 
    This will initialize both server and client by installing all the required dependencies.
 
-2. ### To start the server:
+2. ### To start the Application:
 
    npm start
 
